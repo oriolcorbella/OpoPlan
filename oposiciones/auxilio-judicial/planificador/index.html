@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planificador de estudio para Auxilio Judicial | OpoPlan</title>
+<meta name="description" content="Genera tu calendario de estudio para la oposición de Auxilio Judicial con repetición espaciada. Reparte los temas, coloca los repasos y no te olvides del tema 1. Gratis, sin registro, sin academia detrás.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Planificador de estudio para Auxilio Judicial">
+<meta property="og:description" content="Calendario de estudio gratuito con repetición espaciada para la oposición de Auxilio Judicial. Sin registro, sin curso que vender.">
+<meta property="og:url" content="https://opoplan.example/oposiciones/auxilio-judicial/planificador/">
+<link rel="canonical" href="https://opoplan.example/oposiciones/auxilio-judicial/planificador/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #f6f1e6;
+    --paper-raised: #efe7d6;
+    --ink: #2b2620;
+    --ink-soft: #6b6355;
+    --line: #d8cdb4;
+    --line-strong: #b9ab88;
+    --indigo: #38367f;
+    --indigo-deep: #24234f;
+    --indigo-soft: #d9d8ef;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", Arial, sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:"Source Serif 4", Georgia, serif;
+    font-weight:600;
+    color:var(--indigo-deep);
+    line-height:1.2;
+    margin:0 0 .5em;
+  }
+  h1{font-size:2.4rem;}
+  h2{font-size:1.7rem;}
+  h3{font-size:1.2rem;}
+  p{margin:0 0 1em;}
+  a{color:var(--indigo);}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #1d5fae;outline-offset:2px;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+
+  header.site{border-bottom:1px solid var(--line);padding:18px 0;}
+  header.site .wrap{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .wordmark{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.3rem;color:var(--indigo-deep);text-decoration:none;}
+  .wordmark span{color:var(--indigo);}
+  header.site nav a{margin-left:18px;font-size:.92rem;color:var(--ink-soft);text-decoration:none;}
+  header.site nav a:hover{color:var(--indigo);text-decoration:underline;}
+
+  section{padding:56px 0;}
+  section.tight{padding:36px 0;}
+  section + section{border-top:1px solid var(--line);}
+
+  .hero{padding:52px 0 40px;}
+  .hero .kicker{font-size:1rem;color:var(--ink-soft);margin-bottom:10px;}
+  .hero h1{max-width:20ch;}
+  .hero .lede{max-width:56ch;font-size:1.12rem;color:var(--ink-soft);}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;}
+  .btn{
+    display:inline-block;
+    background:var(--indigo);
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    padding:13px 24px;
+    border:1px solid var(--indigo-deep);
+  }
+  .btn:hover{background:var(--indigo-deep);}
+  .btn.secondary{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--line-strong);
+  }
+  .btn.secondary:hover{border-color:var(--indigo);color:var(--indigo);}
+
+  .problem-list{margin:18px 0 0;padding:0;list-style:none;}
+  .problem-list li{
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:2.2rem 1fr;
+    gap:12px;
+  }
+  .problem-list li:first-child{border-top:1px solid var(--line);}
+  .problem-list .num{font-family:"Source Serif 4",serif;font-weight:600;color:var(--indigo);font-size:1.3rem;}
+
+  .steps{margin:18px 0 0;padding:0;list-style:none;counter-reset:step;}
+  .steps li{
+    counter-increment:step;
+    padding:16px 0 16px 3rem;
+    position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .steps li:first-child{border-top:1px solid var(--line);}
+  .steps li::before{
+    content:counter(step);
+    position:absolute;
+    left:0;top:16px;
+    width:2rem;height:2rem;
+    border:1px solid var(--indigo);
+    color:var(--indigo);
+    font-family:"Source Serif 4",serif;
+    font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+    font-size:.95rem;
+  }
+  .steps h3{margin-bottom:.2em;}
+  .steps p{margin:0;color:var(--ink-soft);}
+
+  .tool-panel{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    padding:20px;
+  }
+  .tool-panel iframe{
+    width:100%;
+    height:780px;
+    border:1px solid var(--line-strong);
+    background:#fff;
+  }
+  .tool-panel .tool-foot{
+    margin-top:14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:.9rem;
+    color:var(--ink-soft);
+  }
+
+  .faq-item{border-bottom:1px solid var(--line);padding:16px 0;}
+  .faq-item:first-of-type{border-top:1px solid var(--line);}
+  .faq-item summary{
+    cursor:pointer;
+    font-family:"Source Serif 4",serif;
+    font-weight:600;
+    font-size:1.08rem;
+    color:var(--indigo-deep);
+    list-style:none;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::before{content:"+ ";color:var(--indigo);}
+  .faq-item[open] summary::before{content:"– ";}
+  .faq-item .answer{margin-top:10px;color:var(--ink-soft);max-width:64ch;}
+
+  .transparency{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    padding:32px;
+  }
+  .transparency h2{margin-bottom:.3em;}
+  .transparency p{color:var(--ink-soft);max-width:64ch;}
+
+  .guide-callout{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    padding:20px 0;
+  }
+  .guide-callout p{margin:0;color:var(--ink-soft);}
+
+  footer.site{border-top:1px solid var(--line);padding:28px 0;}
+  footer.site .wrap{font-size:.88rem;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer.site a{color:var(--ink-soft);}
+
+  @media (max-width:640px){
+    h1{font-size:1.9rem;}
+    .tool-panel iframe{height:900px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="wordmark" href="/">Opo<span>Plan</span></a>
+    <nav>
+      <a href="/guias/organizar-temario/">Guía de temario</a>
+      <a href="#planificador">Ir al planificador</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">Auxilio Judicial · planificador de estudio</p>
+      <h1>Planificador de estudio para la oposición de Auxilio Judicial</h1>
+      <p class="lede">Introduce tu temario y tus horas disponibles y te devolvemos un calendario día a día, con los repasos ya colocados, para que llegues al examen habiendo repasado el tema 1 tantas veces como el último.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#planificador">Generar mi calendario ahora</a>
+        <a class="btn secondary" href="#como-funciona">Ver cómo funciona</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight" aria-labelledby="problema-h">
+    <div class="wrap">
+      <h2 id="problema-h">Por qué un Excel se queda corto para este temario</h2>
+      <p>El temario de Auxilio Judicial se divide en materias generales, comunes a otros cuerpos de la Administración de Justicia, y materias específicas del cuerpo. Consulta siempre el temario oficial actualizado de tu convocatoria para el número exacto de temas, porque varía según el año y el ámbito (Estado o comunidad autónoma).</p>
+      <p>Con ese volumen, planificar a mano falla casi siempre por el mismo motivo: un Excel te dice qué estudiar hoy, pero no te dice cuándo volver sobre lo que ya estudiaste. El resultado habitual es que los primeros temas, los que diste hace dos o tres meses, apenas se han vuelto a mirar cuando llega el examen.</p>
+      <ul class="problem-list">
+        <li><span class="num">1</span><div><strong>No hay repaso incorporado.</strong> Un calendario que solo reparte temas hacia delante no programa cuándo repasarlos, así que el repaso depende de que te acuerdes tú.</div></li>
+        <li><span class="num">2</span><div><strong>Los imprevistos rompen el plan.</strong> Un día perdido en un Excel manual obliga a recalcular todo a mano; nadie lo hace, así que el plan se abandona.</div></li>
+        <li><span class="num">3</span><div><strong>No hay forma de ver el conjunto.</strong> Sin un calendario visual es difícil saber, de un vistazo, si vas dentro de plazo o si te estás quedando corto de tiempo antes del examen.</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="tight" id="como-funciona" aria-labelledby="como-h">
+    <div class="wrap">
+      <h2 id="como-h">Cómo funciona</h2>
+      <ol class="steps">
+        <li>
+          <h3>Indica tu temario</h3>
+          <p>Número de temas de Auxilio Judicial según tu convocatoria y una estimación de horas por tema.</p>
+        </li>
+        <li>
+          <h3>Indica tus horas y tu fecha de examen</h3>
+          <p>Cuántas horas al día puedes estudiar y qué días. Si aún no tienes fecha de examen, también funciona.</p>
+        </li>
+        <li>
+          <h3>Recibes el calendario</h3>
+          <p>Un calendario mensual con cada tema colocado y sus repasos ya programados con repetición espaciada.</p>
+        </li>
+        <li>
+          <h3>Sigues y marcas</h3>
+          <p>Cada día abres el calendario, ves qué toca y lo marcas como hecho. Se guarda solo en tu navegador.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="planificador" aria-labelledby="tool-h">
+    <div class="wrap">
+      <h2 id="tool-h">Tu planificador de Auxilio Judicial</h2>
+      <p>Hemos dejado el nombre de la oposición ya puesto. Rellena el número de temas de tu convocatoria y tus horas: el calendario se genera al momento, sin registro.</p>
+      <div class="tool-panel">
+        <iframe
+          src="/opoplan.html?titulo=Auxilio%20Judicial&horas=3"
+          title="Herramienta OpoPlan: generador de calendario de estudio para Auxilio Judicial"
+          loading="lazy"></iframe>
+        <div class="tool-foot">
+          <span>¿No se ve bien en tu pantalla?</span>
+          <a href="/opoplan.html?titulo=Auxilio%20Judicial&horas=3">Abrir el planificador a pantalla completa</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight" aria-labelledby="faq-h">
+    <div class="wrap">
+      <h2 id="faq-h">Preguntas frecuentes</h2>
+
+      <details class="faq-item">
+        <summary>¿Cómo organizar el temario de Auxilio Judicial?</summary>
+        <div class="answer">
+          <p>Lo habitual es dividir el temario en bloques (materias generales y materias específicas) y avanzar por orden, pero el punto que más gente se salta es el repaso: si solo avanzas hacia delante, los primeros temas se enfrían. Un plan de estudio para Auxilio Judicial funciona mejor cuando cada tema, además de su primera lectura, tiene dos o tres repasos programados antes del examen.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Cuántas horas estudiar al día para la oposición de Auxilio Judicial?</summary>
+        <div class="answer">
+          <p>Depende de tu disponibilidad y de cuánto tiempo te queda hasta la convocatoria: no hay un número universal. Lo que sí importa es que el número de horas que elijas sea sostenible durante meses, no solo una semana. El planificador reparte el temario según las horas y los días que le indiques, así que puedes probar distintos escenarios (por ejemplo 2 horas entre semana y más el fin de semana) y ver cómo cambia el calendario.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Cómo no olvidar los primeros temas de la oposición?</summary>
+        <div class="answer">
+          <p>Con repetición espaciada: volver sobre un tema pasado un día, luego a la semana, luego a las dos o tres semanas, en vez de repasarlo solo una vez "cuando haya tiempo". Es el mecanismo que usa este planificador para colocar los repasos automáticamente en el calendario, sin que tengas que llevar la cuenta tú.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Necesito una academia para planificar el estudio?</summary>
+        <div class="answer">
+          <p>No para la planificación en sí. Una academia puede ayudarte con el contenido (clases, resúmenes, corrección de exámenes), pero organizar el calendario de estudio es un problema mecánico: temas, horas disponibles y repasos. Es justo lo que hace esta herramienta, de forma gratuita.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="tight" aria-labelledby="guide-h">
+    <div class="wrap">
+      <div class="guide-callout">
+        <div>
+          <h2 id="guide-h" style="margin-bottom:.2em;">¿Prefieres primero entender el método?</h2>
+          <p>Lee la guía "Cómo organizar el temario de una oposición" antes de generar tu calendario.</p>
+        </div>
+        <a class="btn secondary" href="/guias/organizar-temario/">Leer la guía</a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="transparencia-h">
+    <div class="wrap">
+      <div class="transparency">
+        <h2 id="transparencia-h">Quién hace esto y por qué es gratis</h2>
+        <p>OpoPlan lo hace una sola persona, no una academia. No hay curso que vender detrás de esta página: el objetivo es que cualquiera que estudie una oposición tenga un calendario de estudio decente sin pagar por él.</p>
+        <p>No pedimos registro ni correo electrónico para usar el planificador. El calendario que generas se guarda únicamente en tu navegador (localStorage): no se envía a ningún servidor, así que si cambias de dispositivo tendrás que generarlo de nuevo. No hay letra pequeña ni prueba gratuita que luego se convierta en suscripción: la herramienta es y seguirá siendo gratuita.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>OpoPlan — planificador de estudio gratuito para opositores.</span>
+    <span><a href="/">Volver a la home</a> · <a href="/guias/organizar-temario/">Guía de temario</a></span>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo organizar el temario de Auxilio Judicial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lo habitual es dividir el temario en bloques (materias generales y materias específicas) y avanzar por orden, pero el punto que más gente se salta es el repaso: si solo avanzas hacia delante, los primeros temas se enfrían. Un plan de estudio para Auxilio Judicial funciona mejor cuando cada tema, además de su primera lectura, tiene dos o tres repasos programados antes del examen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuántas horas estudiar al día para la oposición de Auxilio Judicial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende de tu disponibilidad y de cuánto tiempo te queda hasta la convocatoria: no hay un número universal. Lo importante es que el número de horas elegido sea sostenible durante meses. El planificador reparte el temario según las horas y los días que indiques."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo no olvidar los primeros temas de la oposición?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con repetición espaciada: volver sobre un tema pasado un día, luego a la semana, luego a las dos o tres semanas. Este planificador coloca esos repasos automáticamente en el calendario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito una academia para planificar el estudio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No para la planificación en sí. Una academia puede ayudar con el contenido, pero organizar el calendario de estudio es un problema mecánico de temas, horas disponibles y repasos, que resuelve esta herramienta gratuita."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
