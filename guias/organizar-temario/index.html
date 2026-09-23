@@ -49,7 +49,9 @@
   }
   .callout p{margin:0;}
   footer.site{border-top:1px solid var(--line);padding:24px 0;}
-  footer.site .wrap{max-width:920px;font-size:.88rem;color:var(--ink-soft);}
+  footer.site .wrap{max-width:920px;font-size:.88rem;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer.site a{color:var(--ink-soft);}
+  .guide-nav{max-width:920px;display:block;padding:12px 20px;font-size:.86rem;color:var(--ink-soft);border-bottom:1px solid var(--line);background:var(--paper-raised);}
 </style>
 </head>
 <body>
@@ -60,6 +62,12 @@
     <nav><a href="/oposiciones/auxilio-judicial/planificador/">Planificador Auxilio Judicial</a></nav>
   </div>
 </header>
+
+<nav class="wrap guide-nav" aria-label="Más guías">
+  <a href="/guias/tecnica-pomodoro-oposiciones/">Técnica pomodoro</a> ·
+  <a href="/guias/como-repasar-antes-del-examen/">Repasar antes del examen</a> ·
+  <a href="/guias/gestionar-agobio-oposiciones/">Gestionar el agobio</a>
+</nav>
 
 <main class="wrap">
   <article>
@@ -79,7 +87,7 @@
     <p>La repetición espaciada resuelve esto con una idea simple: cuanto más tiempo llevas sin repasar algo, antes deberías repasarlo, pero ese intervalo se va alargando cada vez que lo repasas bien. En la práctica, para un temario de oposición suele bastar con programar repasos cortos a los pocos días de la primera lectura, luego a la semana, y luego cada dos o tres semanas hasta el examen.</p>
 
     <div class="callout">
-      <p>Esto es exactamente lo que automatiza <a href="/opoplan.html">OpoPlan</a>: le das el número de temas, tus horas y, si la tienes, tu fecha de examen, y te devuelve un calendario con la primera lectura y los repasos ya colocados. Es gratuito y no requiere registro.</p>
+      <p>Esto es exactamente lo que automatiza <a href="/">OpoPlan</a>: le das el número de temas, tus horas y, si la tienes, tu fecha de examen, y te devuelve un calendario con la primera lectura y los repasos ya colocados. Es gratuito y no requiere registro.</p>
     </div>
 
     <h2>4. Deja hueco antes del examen</h2>
@@ -93,7 +101,10 @@
 </main>
 
 <footer class="site">
-  <div class="wrap"><a href="/">Volver a la home de OpoPlan</a></div>
+  <div class="wrap">
+    <span><a href="/">Volver a la home de OpoPlan</a></span>
+    <nav class="legal-links"><a href="/privacidad/">Privacidad</a> · <a href="/aviso-legal/">Aviso legal</a> · <a href="/cookies/">Cookies</a></nav>
+  </div>
 </footer>
 
 </body>
